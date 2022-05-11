@@ -174,7 +174,7 @@ class TestAvgPoolSlice2d(BaseAvgPool2d):
         hexagon_session
     ):
 
-        target_hexagon = tvm.target.hexagon("v68", codegen_options='emit-llvm, emit-asm')
+        target_hexagon = tvm.target.hexagon("v68")
         A = te.placeholder(input_shape_padded, name = "A", dtype = dtype)
         M = sl.avg_pool2d_compute(A, out_size, kernel_size, dtype)
         te_s = sl.avg_pool2d_schedule(M, A, fp16_layout_transform_2d)
